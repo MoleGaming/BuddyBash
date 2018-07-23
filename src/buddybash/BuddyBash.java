@@ -38,7 +38,7 @@ public class BuddyBash extends Application {
 
 	public Parent createContent() {
 		root.setPrefSize(screenW, screenH);
-		
+
 		root.getChildren().add(testFighter);
 
 		AnimationTimer timer = new AnimationTimer() {
@@ -66,7 +66,7 @@ public class BuddyBash extends Application {
 		});
 
 		scene.setOnKeyReleased(e -> {
-			if(pressedKeys.contains(e.getCode())){
+			if (pressedKeys.contains(e.getCode())) {
 				int index = pressedKeys.indexOf(e.getCode());
 				pressedKeys.remove(index);
 				heldSince.remove(index);
@@ -113,7 +113,7 @@ public class BuddyBash extends Application {
 			this.setTranslateX(x);
 			this.setTranslateY(y);
 		}
-		
+
 	}
 
 	private static class FightSprite extends Sprite {
@@ -137,8 +137,8 @@ public class BuddyBash extends Application {
 			this.setScaleY(scale);
 			initInputs();
 		}
-		
-		private void initInputs(){
+
+		private void initInputs() {
 			rButtons.add(KeyCode.D);
 			rButtons.add(KeyCode.RIGHT);
 			lButtons.add(KeyCode.A);
@@ -158,17 +158,17 @@ public class BuddyBash extends Application {
 			animation = animations.get(name);
 			this.setImage(animation.get(0));
 		}
-		
-		public void parseInputs(ArrayList<KeyCode> pressed){
-			for(KeyCode button : pressed){
-				if(rButtons.contains(button))
-					this.setTranslateX(this.getTranslateX()+10);
-				if(lButtons.contains(button))
-					this.setTranslateX(this.getTranslateX()-10);
-				if(dButtons.contains(button))
-					this.setTranslateY(this.getTranslateY()+10);
-				if(uButtons.contains(button))
-					this.setTranslateY(this.getTranslateY()-10);
+
+		public void parseInputs(ArrayList<KeyCode> pressed) {
+			for (KeyCode button : pressed) {
+				if (rButtons.contains(button))
+					this.setTranslateX(this.getTranslateX() + 10);
+				if (lButtons.contains(button))
+					this.setTranslateX(this.getTranslateX() - 10);
+				if (dButtons.contains(button))
+					this.setTranslateY(this.getTranslateY() + 10);
+				if (uButtons.contains(button))
+					this.setTranslateY(this.getTranslateY() - 10);
 			}
 		}
 
@@ -183,7 +183,8 @@ public class BuddyBash extends Application {
 					File aFolder = new File(filePath + "/" + aName);
 					ArrayList<Image> frames = new ArrayList<Image>();
 					for (String fName : aFolder.list()) {
-						Image frame = SwingFXUtils.toFXImage(ImageIO.read(new File(filePath + "/" + aName + "/" + fName)), null);
+						Image frame = SwingFXUtils
+								.toFXImage(ImageIO.read(new File(filePath + "/" + aName + "/" + fName)), null);
 						frames.add(frame);
 					}
 					out.put(aName, frames);
